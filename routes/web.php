@@ -28,8 +28,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware('auth', 'is_admin')->group(function () {
+Route::middleware('auth', 'role:admin')->group(function () {
     Route::get('/admin', [\App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin.index');
+});
+
+Route::middleware('auth', 'role:writer')->group(function () {
+    Route::get('/writers', [\App\Http\Controllers\Admin\AdminController::class, 'index'])->name('writers.index');
 });
 
 require __DIR__.'/auth.php';

@@ -1,7 +1,7 @@
 <x-admin-layout>
     <div class="mt-12 max-w-6xl mx-auto">
         <div class="flex justify-end m-2 p-2">
-            <a href="" class="px-4 py-2 bg-indigo-400 hover:bg-indigo-600 rounded">
+            <a href="{{ route('admin.roles.create') }}" class="px-4 py-2 bg-indigo-400 hover:bg-indigo-600 rounded">
                 New Role</a>
         </div>
         <div class="relative overflow-x-auto shadow-md bg-gray-200 sm:rounded-lg">
@@ -43,6 +43,8 @@
                         </th>
                         <td class="px-6 py-4 text-right">
                             <div class="flex space-x-2">
+                                <a href="{{ route('admin.roles.edit', $role->id) }}"
+                                   class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                             </div>
                         </td>
                     </tr>

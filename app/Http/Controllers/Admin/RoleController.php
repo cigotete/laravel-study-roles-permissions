@@ -27,4 +27,17 @@ class RoleController extends Controller
         return to_route('admin.roles.index')->with('message', 'New Role Added.');
     }
 
+    public function edit(Role $role)
+    {
+        $permissions = Permission::all();
+        return view('admin.roles.edit', compact('role', 'permissions'));
+    }
+
+    public function update(Request $request, Role $role)
+    {
+        $validated = $request->validate(['name' => ['required', 'min:3']]);
+        $role->update($validated);
+
+        return to_route('admin.roles.index')->with('message', 'The Role Updated.');
+    }
 }

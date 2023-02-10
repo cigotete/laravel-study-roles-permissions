@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class RoleController extends Controller
 {
     public function index() {
-        $roles = Role::all();
+        $roles = Role::whereNotIn('name', ['admin'])->orderBy('id')->get();
         return view('admin.roles.index', compact('roles'));
     }
 

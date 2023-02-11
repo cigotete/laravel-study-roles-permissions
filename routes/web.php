@@ -36,6 +36,7 @@ Route::middleware('auth', 'role:admin')
     Route::post('/roles/{role}/permissions', [\App\Http\Controllers\Admin\RoleController::class, 'assignPermissions'])->name('roles.permissions');
     Route::resource('/roles', \App\Http\Controllers\Admin\RoleController::class);
     Route::resource('/permissions', \App\Http\Controllers\Admin\PermissionController::class);
+    Route::resource('/users', \App\Http\Controllers\Admin\UserController::class);
 });
 
 require __DIR__.'/auth.php';

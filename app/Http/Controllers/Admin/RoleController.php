@@ -46,4 +46,10 @@ class RoleController extends Controller
         $role->delete();
         return to_route('admin.roles.index')->with('message', 'The Role deleted.');
     }
+
+    public function assignPermissions(Request $request, Role $role)
+    {
+        $role->permissions()->sync($request->permissions);
+        return back()->with('message', 'Permissions added.');
+    }
 }

@@ -33,6 +33,7 @@ Route::middleware('auth', 'role:admin')
     ->prefix('/admin')
     ->group(function () {
     Route::get('/', [\App\Http\Controllers\Admin\AdminController::class, 'index'])->name('index');
+    Route::post('/roles/{role}/permissions', [\App\Http\Controllers\Admin\RoleController::class, 'assignPermissions'])->name('roles.permissions');
     Route::resource('/roles', \App\Http\Controllers\Admin\RoleController::class);
     Route::resource('/permissions', \App\Http\Controllers\Admin\PermissionController::class);
 });

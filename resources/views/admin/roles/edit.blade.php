@@ -39,7 +39,33 @@
             </div>
         </div>
         <div class="max-w-md mx-auto bg-gray-100 p-6 mt-12 rounded">
+            <form class="space-y-5" method="POST" action="{{ route('admin.roles.permissions', $role->id) }}">
+                @csrf
+                <div>
+                    <label class="text-xl" style="max-width: 300px">
+                        <span class="text-gray-700">Permissions</span>
+                        <select name="permissions[]"
+                                class="block w-full py-3 px-3 mt-2
+                            text-gray-800 appearance-none
+                            border-2 border-gray-100
+                            focus:text-gray-500 focus:outline-none focus:border-gray-200 rounded-md"
+                                multiple>
+                            @foreach ($permissions as $permission)
+                                <option value="{{ $permission->id }}" @selected($role->hasPermission($permission->name))>
+                                    {{ $permission->name }}</option>
+                            @endforeach
+                        </select>
+                    </label>
 
+                </div>
+
+                <button type="submit"
+                        class="w-full py-3 mt-10 bg-indigo-400 hover:bg-indigo-600 rounded-md
+                        font-medium text-white uppercase
+                        focus:outline-none hover:shadow-none">
+                    Assign Permissions
+                </button>
+            </form>
         </div>
     </div>
 </x-admin-layout>

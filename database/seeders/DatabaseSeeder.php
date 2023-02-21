@@ -20,7 +20,8 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        $this->call(RolesSeeder::class);
-        $this->call(AdminSeeder::class);
+        //$this->call(RolesSeeder::class);
+        //$this->call(AdminSeeder::class);
+        \App\Models\Post::factory(10)->create();
     }
 }

@@ -34,13 +34,13 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
-        $this->authorize('update', Post::class);
+        $this->authorize('update', $post);
         return view('posts.edit', compact('post'));
     }
 
     public function update(Request $request, Post $post)
     {
-        $this->authorize('update', Post::class);
+        $this->authorize('update', $post);
         $validated = $request->validate(
             [
                 'title' => 'required',
